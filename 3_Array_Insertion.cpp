@@ -20,11 +20,18 @@ int *insertIntoArray(int arr[], int size, int number, int pos)
         throw out_of_range("Invalid position! Position must be between 1 and " + to_string(size + 1) + ".");
     }
 
-    for (int i = size - 1; i >= pos - 1; i--)
+    if (pos == size + 1)
     {
-        arr[i + 1] = arr[i];
+        arr[pos - 1] = number;
     }
-    arr[pos - 1] = number;
+    else
+    {
+        for (int i = size - 1; i >= pos - 1; i--)
+        {
+            arr[i + 1] = arr[i];
+        }
+        arr[pos - 1] = number;
+    }
 
     return arr;
 }
